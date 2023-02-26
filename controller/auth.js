@@ -38,7 +38,7 @@ const register = async function (req, res, next) {
                 access_token: token
             });
     }catch (error) {
-        return next(new CustomError("Internal Error",500));
+        return next(new CustomError(error.message, 500));
     }
 
 };
@@ -69,8 +69,7 @@ const login = async function (req, res, next) {
                 access_token: token
             });
     } catch (error) {
-        console.log(error);
-        return next(new CustomError("Internal Error", 500));
+        return next(new CustomError(error.message, 500));
     }
 
 };
