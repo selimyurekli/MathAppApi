@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
         select: false
     }
 });
-
+//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
 userSchema.methods.generateJWT = function(){
     const payload = {
         _id : this._id,
