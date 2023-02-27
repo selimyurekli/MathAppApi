@@ -5,12 +5,16 @@ import jwt from "jsonwebtoken";
 const userSchema = new mongoose.Schema({
     name:{ 
         type: String,
-        required: [true,"please provide a name"]
+        required: [true,"Please provide a name"]
+    },
+    surname:{ 
+        type: String,
+        required: [true,"Please provide a name"]
     },
     email:{
         type: String,
         required: [true,"Please provide an email address"],
-        unique: [true,"Try Different email"],
+        unique: [true,"Try different email"],
         match : [/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,"Email is not in the proper format"],
     },
     password:{
@@ -18,13 +22,20 @@ const userSchema = new mongoose.Schema({
         required: [true,"Please provide a password"],
         minlength: [6,"at least 6 chars"],
         select: false
+    },
+    classNum:{
+        type:Number,
+        required: [true, "Please provide a class number for the student"],
+        enums:[9,10,11,12]
     }
 });
-//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
+//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
 userSchema.methods.generateJWT = function(){
     const payload = {
         _id : this._id,
         name: this.name,
+        surname:this.surname,
+        classNum:this.classNum,
         email : this.email
     };
     const token = jwt.sign(payload,process.env.JWT_KEY,{

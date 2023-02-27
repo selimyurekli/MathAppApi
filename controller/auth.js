@@ -6,7 +6,7 @@ const register = async function (req, res, next) {
     try {
 
 
-        const { name, email, password } = req.body;
+        const {name, surname, email, password, classNum} = req.body;
         const checkUser = await User.findOne({ email: email });
         if (checkUser) {
             return next(new CustomError("User has already been exist.", 400));
@@ -15,8 +15,10 @@ const register = async function (req, res, next) {
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = await User.create({
             name: name,
+            surname:surname,
             email: email,
-            password: hashedPassword
+            password: hashedPassword,
+            classNum:classNum
         });
 
 
@@ -48,7 +50,6 @@ const login = async function (req, res, next) {
     try {
         const { email, password } = req.body;
         const checkUser = await User.findOne({ email: email }).select("+password");;
-        console.log(checkUser);
         if (!checkUser) {
             return next(new CustomError("User not found", 404));
         }
