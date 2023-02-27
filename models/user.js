@@ -24,9 +24,8 @@ const userSchema = new mongoose.Schema({
         select: false
     },
     classNum:{
-        type:Number,
-        required: [true, "Please provide a class number for the student"],
-        enums:[9,10,11,12]
+        type:String,
+        required: [true,"Class is required"],
     }
 });
 //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

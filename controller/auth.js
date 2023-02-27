@@ -11,14 +11,17 @@ const register = async function (req, res, next) {
         if (checkUser) {
             return next(new CustomError("User has already been exist.", 400));
         }
+        if(classNum!="9.Sınıf" && classNum!="10.Sınıf" && classNum!="11.Sınıf"&&classNum!="12.Sınıf"){
+            return next(new CustomError("Not Proper Class Format", 500));
 
+        }
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = await User.create({
             name: name,
             surname:surname,
             email: email,
             password: hashedPassword,
-            classNum:classNum
+            classNum: classNum
         });
 
 
