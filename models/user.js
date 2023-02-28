@@ -26,9 +26,14 @@ const userSchema = new mongoose.Schema({
     classNum:{
         type:String,
         required: [true,"Class is required"],
+    },
+    role:{
+        type:String,
+        default:"student",
+        enums:["student","teacher","admin"]
     }
 });
-//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
+//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
 userSchema.methods.generateJWT = function(){
     const payload = {
         _id : this._id,

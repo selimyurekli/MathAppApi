@@ -1,0 +1,8 @@
+{
+    "questions":[
+        {"index":"1","image":"questions/selim.jpeg","correctAnswer":"A", "subject":"Reel Sayılar"},
+        {"index":"2","image":"questions/selim.jpeg","correctAnswer":"A", "subject":"Reel Sayılar"},
+        {"index":"3","image":"questions/selim.jpeg","correctAnswer":"A", "subject":"Reel Sayılar"},
+        {"index":"4","image":"questions/selim.jpeg","correctAnswer":"A", "subject":"Reel Sayılar"}
+    ]
+}
