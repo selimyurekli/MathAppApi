@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
         enums:["student","teacher","admin"]
     }
 });
-//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
+//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
 userSchema.methods.generateJWT = function(){
     const payload = {
         _id : this._id,
